@@ -35,5 +35,11 @@ $("#form").on("submit", function (e) {
 });
 // The submit log button will eventually link to the 
 $("#viewLog").on("click", function () {
-  console.log("..loading logs");
+  window.location.href = "./results.html";
+});
+
+// Home button function 
+$("#homeButton").on("click", function () {
+  window.location.href = "./index.html";
+  console.log("clicked");
 });
