@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
+    <title>Food Service Log Manager</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -24,14 +24,14 @@
       <h1>Food Service Log Manager</h1>
       <div class="row mb-3">
         <div class="col-lg-12">
-          <form id="">
+          <form id="form">
             <div class="form-group">
               <label for="sel1">Equipment:</label>
-              <select class="form-control" id="sel1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+              <select class="form-control" id="selector">
+                <option value="Walk-in Freezer">Walk-in freezer</option>
+                <option value="Cold Storage">Cold Storage</option>
+                <option value="Pastry Station Cooler">Pastry station Cooler</option>
+                <option value="Grill Station Cooler">Grill station Cooler</option>
               </select>
             </div>
             <div class="row mb-3">
@@ -39,7 +39,7 @@
                 <label for="name">Name</label>
                 <input
                   name="name"
-                  id=""
+                  id="userName"
                   type="text"
                   class="form-control"
                   placeholder="name"
@@ -51,17 +51,17 @@
                 <label for="temp">Temperature</label>
                 <input
                   name="temp"
-                  id=""
+                  id="temperature"
                   type="text"
                   class="form-control"
-                  placeholder="name"
+                  placeholder="°"
                 />
               </div>
             </div>
-            <button id="" type="button" class="btn btn-primary">
+            <button id="addToLog" type="submit" class="btn btn-primary">
               Add To Log
             </button>
-            <button id="" type="button" class="btn btn-primary">
+            <button id="viewLog" type="button" class="btn btn-primary">
               View Log
             </button>
           </form>
