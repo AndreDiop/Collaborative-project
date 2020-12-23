@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
+    <title>Food Service Log Manager</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -12,7 +12,7 @@
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="styles.css" />
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
@@ -20,8 +20,56 @@
     ></script>
   </head>
   <body>
-    <!-- added comment #2 lc -->
-    <script src="" async defer></script>
+    <div class="container">
+      <h1>Food Service Log Manager</h1>
+      <div class="row mb-3">
+        <div class="col-lg-12">
+          <form id="form">
+            <div class="form-group">
+              <label for="sel1">Equipment:</label>
+              <select class="form-control" id="selector">
+                <option value="Walk-in Freezer">Walk-in freezer</option>
+                <option value="Cold Storage">Cold Storage</option>
+                <option value="Pastry Station Cooler">Pastry station Cooler</option>
+                <option value="Grill Station Cooler">Grill station Cooler</option>
+              </select>
+            </div>
+            <div class="row mb-3">
+              <div class="col-lg-12">
+                <label for="name">Name</label>
+                <input
+                  name="name"
+                  id="userName"
+                  type="text"
+                  class="form-control"
+                  placeholder="name"
+                />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-lg-12">
+                <label for="temp">Temperature</label>
+                <input
+                  name="temp"
+                  id="temperature"
+                  type="text"
+                  class="form-control"
+                  placeholder="°"
+                />
+              </div>
+            </div>
+            <button id="addToLog" type="submit" class="btn btn-primary">
+              Add To Log
+            </button>
+            <button id="viewLog" type="button" class="btn btn-primary">
+              View Log
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="testing.js" async defer></script>
   </body>
 </html>
 
