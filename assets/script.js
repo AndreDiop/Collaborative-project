@@ -8,7 +8,7 @@ equipmentArray = [];
 
 // FUNCTION CALLS
 
-// EVENT LISTENERS 
+// EVENT LISTENERS
 // This listens to the change on the selector and logs the change to local storage
 $("select").on("change", function () {
   var equipment = this.value;
@@ -25,10 +25,8 @@ $("#form").on("submit", function (e) {
   var tempInput = $("#temperature").val();
   tempArray.push(tempInput);
   localStorage.setItem("Temperatures", JSON.stringify(tempArray));
-
-  console.log("You submitted the form");
 });
-// The submit log button will eventually link to the 
+// The submit log button will eventually link to the
 $("#viewLog").on("click", function () {
-  console.log("..loading logs");
+  alert("Under construction");
 });
