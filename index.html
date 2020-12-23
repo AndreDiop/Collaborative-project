@@ -22,7 +22,9 @@
   <body>
     <div class="container">
       <h1>Food Service Log Manager</h1>
-      <p><em>Date: <span id="date"></span></em></p>
+      <p>
+        <em>Date: <span id="date"></span></em>
+      </p>
       <div class="row mb-3">
         <div class="col-lg-12">
           <form id="form">
@@ -31,8 +33,12 @@
               <select class="form-control" id="selector">
                 <option value="Walk-in Freezer">Walk-in freezer</option>
                 <option value="Cold Storage">Cold Storage</option>
-                <option value="Pastry Station Cooler">Pastry station Cooler</option>
-                <option value="Grill Station Cooler">Grill station Cooler</option>
+                <option value="Pastry Station Cooler"
+                  >Pastry station Cooler</option
+                >
+                <option value="Grill Station Cooler"
+                  >Grill station Cooler</option
+                >
               </select>
             </div>
             <div class="row mb-3">
@@ -59,6 +65,7 @@
                 />
               </div>
             </div>
+
             <button id="addToLog" type="submit" class="btn btn-primary">
               Add To Log
             </button>
@@ -66,9 +73,57 @@
               View Log
             </button>
           </form>
+
+          <!-- Flexbox container for aligning the toasts -->
+          <div
+            aria-live="polite"
+            aria-atomic="true"
+            class="d-flex justify-content-center align-items-center w-100"
+          >
+            <!-- Then put toasts within -->
+            <div
+              class="toast"
+              role="alert"
+              aria-live="assertive"
+              aria-atomic="true"
+            >
+              <div class="toast-header">
+                <strong class="me-auto">Added to the Log!</strong>
+                <small></small>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="toast"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="toast-body">
+                Your results have been successfully added to the log.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- bootstrap scripts for the toast notification -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+      integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function() {
+        $("#addToLog").click(function() {
+          $(".toast").toast("show");
+        });
+      });
+    </script>
 
     <script src="./assets/script.js" async defer></script>
   </body>
