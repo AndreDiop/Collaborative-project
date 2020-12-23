@@ -32,3 +32,7 @@ $("#form").on("submit", function (e) {
 $("#viewLog").on("click", function () {
   console.log("..loading logs");
 });
+
+// PLACEHOLDER FOR MOMENT TESTING
+// H2 CREATED ON INDEX FOR TESTING. REMOVE WHEN READY
+$("h2").text(moment().format('MMMM Do YYYY, h:mm:ss a'));
