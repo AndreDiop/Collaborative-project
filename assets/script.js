@@ -1,5 +1,10 @@
 // DOM VARIABLES
 
+//global date variable
+date = new Date();
+date.toString().slice(0, 24);
+$("#date").text(date);
+
 // JS VARIABLES
 tempArray = [];
 userArray = [];
