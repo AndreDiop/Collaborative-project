@@ -9,6 +9,7 @@ $("#date").text(date);
 tempArray = [];
 userArray = [];
 equipmentArray = [];
+emailArray = [];
 // FUNCTION DEFINITIONS
 
 // FUNCTION CALLS
@@ -38,8 +39,14 @@ $("#viewLog").on("click", function () {
   window.location.href = "./results.html";
 });
 
-// Home button function 
+// Home button function
 $("#homeButton").on("click", function () {
   window.location.href = "./index.html";
   console.log("clicked");
+});
+
+$("#emailButton").on("click", function () {
+  var emailInput = $("#emailInput").val();
+  emailArray.push(emailInput);
+  localStorage.setItem("Emails", JSON.stringify(emailArray));
 });
