@@ -69,18 +69,19 @@
             <button id="addToLog" type="submit" class="btn btn-primary">
               Add To Log
             </button>
-            <button id="viewLog" type="button" class="btn btn-primary">
-              View Log
-            </button>
+            <a href="./results.html">
+              <button id="viewLog" type="button" class="btn btn-primary">
+                View Log
+              </button>
+            </a>
           </form>
 
-          <!-- Flexbox container for aligning the toasts -->
+          <!-- toast alert on add button -->
           <div
             aria-live="polite"
             aria-atomic="true"
             class="d-flex justify-content-center align-items-center w-100"
           >
-            <!-- Then put toasts within -->
             <div
               class="toast"
               role="alert"
@@ -124,7 +125,6 @@
         });
       });
     </script>
-    
 
     <script src="./assets/script.js" async defer></script>
   </body>
