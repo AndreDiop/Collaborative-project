@@ -43,26 +43,3 @@ $("#homeButton").on("click", function () {
   window.location.href = "./index.html";
   console.log("clicked");
 });
-
-// QuickChart TEST
-data = {
-  type: "doughnut",
-  datasets: [
-    {
-      data: [10, 20, 30],
-    },
-  ],
-
-  // These labels appear in the legend and in the tooltips when hovering different arcs
-  labels: ["Red", "Yellow", "Blue"],
-};
-var startURL = "https://quickchart.io/chart?c={;"
-// var chartType = "type:'doughnut'";
-// var chartLabels = ["Complete", "Incomplete", "Warning"];
-// var chartData = [12, 2, 2];
-
-console.log(JSON.stringify(data));
-
-var quickChartURL =
-  "https://quickchart.io/chart?c={type:'doughnut',data:{labels:['January','February','March','April','May'],datasets:[{data:[50,60,70,180,190]}]},options:{plugins:{doughnutlabel:{labels:[{text:'550',font:{size:20}},{text:'total'}]}}}}";
-console.log(quickChartURL);
