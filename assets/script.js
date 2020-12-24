@@ -9,11 +9,12 @@ $("#date").text(date);
 tempArray = [];
 userArray = [];
 equipmentArray = [];
+emailArray = [];
 // FUNCTION DEFINITIONS
 
 // FUNCTION CALLS
 
-// EVENT LISTENERS 
+// EVENT LISTENERS
 // This listens to the change on the selector and logs the change to local storage
 $("select").on("change", function () {
   var equipment = this.value;
@@ -33,13 +34,19 @@ $("#form").on("submit", function (e) {
 
   console.log("You submitted the form");
 });
-// The submit log button will eventually link to the 
+// The submit log button will eventually link to the
 $("#viewLog").on("click", function () {
   window.location.href = "./results.html";
 });
 
-// Home button function 
+// Home button function
 $("#homeButton").on("click", function () {
   window.location.href = "./index.html";
   console.log("clicked");
+});
+
+$("#emailButton").on("click", function () {
+  var emailInput = $("#emailInput").val();
+  emailArray.push(emailInput);
+  localStorage.setItem("Emails", JSON.stringify(emailArray));
 });
