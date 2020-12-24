@@ -13,7 +13,7 @@ equipmentArray = [];
 
 // FUNCTION CALLS
 
-// EVENT LISTENERS 
+// EVENT LISTENERS
 // This listens to the change on the selector and logs the change to local storage
 $("select").on("change", function () {
   var equipment = this.value;
@@ -33,7 +33,30 @@ $("#form").on("submit", function (e) {
 
   console.log("You submitted the form");
 });
-// The submit log button will eventually link to the 
+// The submit log button will eventually link to the
 $("#viewLog").on("click", function () {
   console.log("..loading logs");
 });
+
+// QuickChart TEST
+data = {
+  type: "doughnut",
+  datasets: [
+    {
+      data: [10, 20, 30],
+    },
+  ],
+
+  // These labels appear in the legend and in the tooltips when hovering different arcs
+  labels: ["Red", "Yellow", "Blue"],
+};
+var startURL = "https://quickchart.io/chart?c={;"
+// var chartType = "type:'doughnut'";
+// var chartLabels = ["Complete", "Incomplete", "Warning"];
+// var chartData = [12, 2, 2];
+
+console.log(JSON.stringify(data));
+
+var quickChartURL =
+  "https://quickchart.io/chart?c={type:'doughnut',data:{labels:['January','February','March','April','May'],datasets:[{data:[50,60,70,180,190]}]},options:{plugins:{doughnutlabel:{labels:[{text:'550',font:{size:20}},{text:'total'}]}}}}";
+console.log(quickChartURL);
