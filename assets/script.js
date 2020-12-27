@@ -1,18 +1,34 @@
 // DOM VARIABLES
 
-//global date variable
-date = new Date();
+date = new Date(); // Global date variable
 date.toString().slice(0, 24);
 $("#date").text(date);
+
+time = date.toLocaleTimeString(); // Global time variable
 
 // JS VARIABLES
 tempArray = [];
 userArray = [];
 equipmentArray = [];
 emailArray = [];
+timeArray = [];
 // FUNCTION DEFINITIONS
 
-// FUNCTION CALLS
+$(document).ready(function () {
+  recall(); //Function call to display locally stored data
+});
+//This function retrieves items from localStorage
+function recall() {
+  var timeLog = JSON.parse(localStorage.getItem("Time Logged"));
+  var equipmentLog = JSON.parse(localStorage.getItem("Equipment"));
+  var tempLog = JSON.parse(localStorage.getItem("Temperatures"));
+  var nameLog = JSON.parse(localStorage.getItem("Employees"));
+  //  Items from local storage are displayed here
+  $(".timeDisplay").text(timeLog[0]);
+  $(".equipmentDisplay").text(equipmentLog[0]);
+  $(".tempDisplay").text(tempLog[0]);
+  $(".nameDisplay").text(nameLog[0]);
+}
 
 // EVENT LISTENERS
 // This listens to the change on the selector and logs the change to local storage
@@ -21,7 +37,8 @@ $("select").on("change", function () {
   equipmentArray.push(equipment);
   localStorage.setItem("Equipment", JSON.stringify(equipmentArray));
 });
-// Users enter their name and temperature here and it's saved to local storage
+
+// Users enter their name and temperature here and it is saved to local storage along with the time logged
 $("#form").on("submit", function (e) {
   e.preventDefault();
   var userName = $("#userName").val();
@@ -32,9 +49,12 @@ $("#form").on("submit", function (e) {
   tempArray.push(tempInput);
   localStorage.setItem("Temperatures", JSON.stringify(tempArray));
 
-  console.log("You submitted the form");
+  timeArray.push(time);
+  localStorage.setItem("Time Logged", JSON.stringify(timeArray));
+
+  recall();
 });
-// The submit log button will eventually link to the
+// The submit log links to the results.html
 $("#viewLog").on("click", function () {
   window.location.href = "./results.html";
 });
@@ -42,7 +62,6 @@ $("#viewLog").on("click", function () {
 // Home button function
 $("#homeButton").on("click", function () {
   window.location.href = "./index.html";
-  console.log("clicked");
 });
 
 $("#emailButton").on("click", function () {
