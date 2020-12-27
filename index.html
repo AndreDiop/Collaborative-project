@@ -31,14 +31,16 @@
             <div class="form-group">
               <label for="sel1">Equipment:</label>
               <select class="form-control" id="selector">
+                <option></option>
+                <!-- This empty value is so that the user must select equipment -->
                 <option value="Walk-in Freezer">Walk-in freezer</option>
                 <option value="Cold Storage">Cold Storage</option>
-                <option value="Pastry Station Cooler"
-                  >Pastry station Cooler</option
-                >
-                <option value="Grill Station Cooler"
-                  >Grill station Cooler</option
-                >
+                <option value="Pastry Station Cooler">
+                  Pastry station Cooler
+                </option>
+                <option value="Grill Station Cooler">
+                  Grill station Cooler
+                </option>
               </select>
             </div>
             <div class="row mb-3">
@@ -119,8 +121,8 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      $(document).ready(function() {
-        $("#addToLog").click(function() {
+      $(document).ready(function () {
+        $("#addToLog").click(function () {
           $(".toast").toast("show");
         });
       });
