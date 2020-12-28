@@ -24,10 +24,19 @@ function recall() {
   var tempLog = JSON.parse(localStorage.getItem("Temperatures"));
   var nameLog = JSON.parse(localStorage.getItem("Employees"));
   //  Items from local storage are displayed here
-  $(".timeDisplay").text(timeLog[0]);
-  $(".equipmentDisplay").text(equipmentLog[0]);
-  $(".tempDisplay").text(tempLog[0]);
-  $(".nameDisplay").text(nameLog[0]);
+  for (i = 0; i < timeLog.length; i++) {
+    $("#dataTable")
+      .find("tbody")
+      .append(
+        $("<tr>").append(
+          $("<td>").append([1+i]),
+          $("<td>").append(timeLog[i]),
+          $("<td>").append(equipmentLog[i]),
+          $("<td>").append(tempLog[i]),
+          $("<td>").append(nameLog[i])
+        )
+      );
+  }
 }
 
 // EVENT LISTENERS
