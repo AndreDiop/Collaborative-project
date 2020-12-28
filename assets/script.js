@@ -68,5 +68,5 @@ $("#emailButton").on("click", function () {
   var emailInput = $("#emailInput").val();
   emailArray.push(emailInput);
   localStorage.setItem("Emails", JSON.stringify(emailArray));
-  $('#submit-email')[0].reset();
+  $("#submit-email")[0].reset();
 });
