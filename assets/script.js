@@ -15,6 +15,7 @@ timeArray = [];
 // FUNCTION DEFINITIONS
 
 $(document).ready(function () {
+  randomImage();
   recall(); //Function call to display locally stored data
 });
 //This function retrieves items from localStorage
@@ -70,3 +71,19 @@ $("#emailButton").on("click", function () {
   localStorage.setItem("Emails", JSON.stringify(emailArray));
   $('#submit-email')[0].reset();
 });
+
+
+function randomImage() {
+  var queryURL = "https://api.pexels.com/v1/search?query=restaurant";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader ("Authorization", "563492ad6f9170000100000143a58219eff2429d82e432a798f5c2b3");
+  },
+  }).then(function(response) {
+    console.log(response);
+  });
+}
+
