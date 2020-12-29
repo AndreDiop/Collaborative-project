@@ -14,7 +14,7 @@ emailArray = [];
 timeArray = [];
 // FUNCTION DEFINITIONS
 
-$(document).ready(function () {
+$(document).ready(function() {
   recall(); //Function call to display locally stored data
 });
 //This function retrieves items from localStorage
@@ -32,14 +32,14 @@ function recall() {
 
 // EVENT LISTENERS
 // This listens to the change on the selector and logs the change to local storage
-$("select").on("change", function () {
+$("select").on("change", function() {
   var equipment = this.value;
   equipmentArray.push(equipment);
   localStorage.setItem("Equipment", JSON.stringify(equipmentArray));
 });
 
 // Users enter their name and temperature here and it is saved to local storage along with the time logged
-$("#form").on("submit", function (e) {
+$("#form").on("submit", function(e) {
   e.preventDefault();
   var userName = $("#userName").val();
   userArray.push(userName);
@@ -55,23 +55,47 @@ $("#form").on("submit", function (e) {
   recall();
 });
 // The submit log links to the results.html
-$("#viewLog").on("click", function () {
+$("#viewLog").on("click", function() {
   window.location.href = "./results.html";
 });
 
-//toast popup when Add Log clicked
-$("#addToLog").click(function () {
-  $(".toast").toast("show");
-});
-
 // Home button function
-$("#homeButton").on("click", function () {
+$("#homeButton").on("click", function() {
   window.location.href = "./index.html";
 });
 
-$("#emailButton").on("click", function () {
+$("#emailButton").on("click", function() {
   var emailInput = $("#emailInput").val();
   emailArray.push(emailInput);
   localStorage.setItem("Emails", JSON.stringify(emailArray));
   $("#submit-email")[0].reset();
+});
+
+// form validation
+$(function() {
+  $("form[name='log-form']").validate({
+    rules: {
+      name: "required",
+      temp: {
+        required: true
+      },
+      equipment: {
+        required: true
+      }
+    },
+    messages: {
+      name: "Please enter your name",
+      equipment: "Please select equipment",
+      temperature: "Please enter a temperature"
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      //toast popup when Add Log clicked
+      $("#addToLog").click(function() {
+        $(".toast").toast("show");
+      });
+      form.submit();
+    }
+  });
 });

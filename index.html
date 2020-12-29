@@ -27,11 +27,11 @@
       </p>
       <div class="row mb-3">
         <div class="col-lg-12">
-          <form id="form">
+            <form id="form" name="log-form">
             <div class="form-group">
               <label for="sel1">Equipment:</label>
-              <select class="form-control" id="selector">
-                <option></option>
+              <select class="form-control" id="equipment">
+                <option value="" selected hidden>Select equipment</option>
                 <!-- This empty value is so that the user must select equipment -->
                 <option value="Walk-in Freezer">Walk-in freezer</option>
                 <option value="Cold Storage">Cold Storage</option>
@@ -80,6 +80,7 @@
 
           <!-- toast alert on add button -->
           <div
+            id="toast-popup"
             aria-live="polite"
             aria-atomic="true"
             class="d-flex justify-content-center align-items-center w-100"
@@ -105,6 +106,7 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -120,9 +122,9 @@
       integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
       crossorigin="anonymous"
     ></script>
+   <!-- validate user input plugin -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 
     <script src="./assets/script.js" async defer></script>
   </body>
 </html>
-
-<!-- THIS IS PAUL THIS IS JUST FOR TESTING GIT STUFF -->
