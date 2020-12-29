@@ -4,8 +4,6 @@ date = new Date(); // Global date variable
 date.toString().slice(0, 24);
 $("#date").text(date);
 
-time = date.toLocaleTimeString(); // Global time variable
-
 // JS VARIABLES
 tempArray = [];
 userArray = [];
@@ -29,7 +27,7 @@ function recall() {
       .find("tbody")
       .append(
         $("<tr>").append(
-          $("<td>").append([1+i]),
+          $("<td>").append([1 + i]),
           $("<td>").append(timeLog[i]),
           $("<td>").append(equipmentLog[i]),
           $("<td>").append(tempLog[i]),
@@ -58,6 +56,7 @@ $("#form").on("submit", function (e) {
   tempArray.push(tempInput);
   localStorage.setItem("Temperatures", JSON.stringify(tempArray));
 
+  time = date.getHours() + ":" + date.getMinutes();
   timeArray.push(time);
   localStorage.setItem("Time Logged", JSON.stringify(timeArray));
 
