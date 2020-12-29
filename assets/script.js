@@ -59,6 +59,11 @@ $("#viewLog").on("click", function () {
   window.location.href = "./results.html";
 });
 
+//toast popup when Add Log clicked
+$("#addToLog").click(function () {
+  $(".toast").toast("show");
+});
+
 // Home button function
 $("#homeButton").on("click", function () {
   window.location.href = "./index.html";
