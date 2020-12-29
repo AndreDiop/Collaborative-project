@@ -15,6 +15,7 @@ timeArray = [];
 $(document).ready(function () {
   recall(); //Function call to display locally stored data
 });
+
 //This function retrieves items from localStorage
 function recall() {
   var timeLog = JSON.parse(localStorage.getItem("Time Logged"));
@@ -48,15 +49,24 @@ $("select").on("change", function () {
 // Users enter their name and temperature here and it is saved to local storage along with the time logged
 $("#form").on("submit", function (e) {
   e.preventDefault();
+
+  var tempInput = $("#temperature").val();
+  if (isNaN(tempInput)) {
+    return;
+  } else {
+    tempInput = $("#temperature").val();
+    tempArray.push(tempInput);
+    localStorage.setItem("Temperatures", JSON.stringify(tempArray));
+  }
   var userName = $("#userName").val();
   userArray.push(userName);
   localStorage.setItem("Employees", JSON.stringify(userArray));
 
-  var tempInput = $("#temperature").val();
-  tempArray.push(tempInput);
-  localStorage.setItem("Temperatures", JSON.stringify(tempArray));
-
-  time = date.getHours() + ":" + date.getMinutes();
+  function formatTime(i) {
+    //This adds a zero to display time correctly
+    return i < 10 ? "0" + i : i;
+  }
+  time = formatTime(date.getHours()) + ":" + formatTime(date.getMinutes());
   timeArray.push(time);
   localStorage.setItem("Time Logged", JSON.stringify(timeArray));
 
@@ -65,6 +75,11 @@ $("#form").on("submit", function (e) {
 // The submit log links to the results.html
 $("#viewLog").on("click", function () {
   window.location.href = "./results.html";
+});
+
+//toast popup when Add Log clicked
+$("#addToLog").click(function () {
+  $(".toast").toast("show");
 });
 
 // Home button function
