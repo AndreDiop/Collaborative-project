@@ -41,7 +41,7 @@ $("select").on("change", function() {
 // Users enter their name and temperature here and it is saved to local storage along with the time logged
 $("#form").on("submit", function(e) {
   e.preventDefault();
-  var userName = $("#userName").val();
+  var userName = $("#username").val();
   userArray.push(userName);
   localStorage.setItem("Employees", JSON.stringify(userArray));
 
@@ -54,6 +54,7 @@ $("#form").on("submit", function(e) {
 
   recall();
 });
+
 // The submit log links to the results.html
 $("#viewLog").on("click", function() {
   window.location.href = "./results.html";
@@ -88,16 +89,19 @@ $(function() {
     messages: {
       name: "Please enter your name",
       equipment: "Please select equipment",
-      temperature: "Please enter a temperature"
+      temp: "Please enter a temperature"
     },
     // Make sure the form is submitted to the destination defined
     // in the "action" attribute of the form when valid
     submitHandler: function(form) {
-      //toast popup when Add Log clicked
-      $("#addToLog").click(function() {
-        $(".toast").toast("show");
-      });
+      //submit form
       form.submit();
+      //toast popup when Add Log button clicked
+      $("#addToLog").click(function(e) {
+        e.preventDefault();
+        $(".toast").toast("show");
+        console.log("submitted");
+      });
     }
   });
 });
