@@ -75,7 +75,9 @@ $("#emailButton").on("click", function() {
 $(function() {
   $("form[name='log-form']").validate({
     rules: {
-      name: "required",
+      name: {
+        required: true
+      },
       temp: {
         required: true
       },

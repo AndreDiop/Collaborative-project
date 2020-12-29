@@ -29,9 +29,9 @@
         <div class="col-lg-12">
             <form id="form" name="log-form">
             <div class="form-group">
-              <label for="sel1">Equipment:</label>
-              <select class="form-control" id="equipment">
-                <option value="" selected hidden>Select equipment</option>
+              <label for="equipment">Equipment:</label>
+              <select class="form-control" id="equipment" name="equipment">
+                <option value="" selected hidden></option>
                 <!-- This empty value is so that the user must select equipment -->
                 <option value="Walk-in Freezer">Walk-in freezer</option>
                 <option value="Cold Storage">Cold Storage</option>
@@ -45,19 +45,19 @@
             </div>
             <div class="row mb-3">
               <div class="col-lg-12">
-                <label for="name">Name</label>
+                <label for="name">Name:</label>
                 <input
                   name="name"
                   id="userName"
                   type="text"
                   class="form-control"
-                  placeholder="name"
+                  placeholder="Employee Name"
                 />
               </div>
             </div>
             <div class="row mb-3">
               <div class="col-lg-12">
-                <label for="temp">Temperature</label>
+                <label for="temp">Temperature:</label>
                 <input
                   name="temp"
                   id="temperature"
