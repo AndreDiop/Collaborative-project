@@ -15,8 +15,10 @@ timeArray = [];
 // FUNCTION DEFINITIONS
 
 $(document).ready(function () {
+  randomImage();
   recall(); //Function call to display locally stored data
 });
+
 //This function retrieves items from localStorage
 function recall() {
   var timeLog = JSON.parse(localStorage.getItem("Time Logged"));
@@ -29,6 +31,18 @@ function recall() {
   $(".equipmentDisplay").text(equipmentLog[0]);
   $(".tempDisplay").text(tempLog[0]);
   $(".nameDisplay").text(nameLog[0]);
+  for (i = 0; i < timeLog.length; i++) {
+    $("#dataTable")
+      .find("tbody")
+      .append(
+        $("<tr>").append(
+          $("<td>").append([1 + i]),
+          $("<td>").append(timeLog[i]),
+          $("<td>").append(equipmentLog[i]),
+          $("<td>").append(tempLog[i]),
+          $("<td>").append(nameLog[i])
+        )
+      );
   }
 }
 
@@ -44,6 +58,15 @@ $("select").on("change", function () {
 // Users enter their name and temperature here and it is saved to local storage along with the time logged
 $("#form").on("submit", function (e) {
   e.preventDefault();
+
+  var tempInput = $("#temperature").val();
+  if (isNaN(tempInput)) {
+    return;
+  } else {
+    tempInput = $("#temperature").val();
+    tempArray.push(tempInput);
+    localStorage.setItem("Temperatures", JSON.stringify(tempArray));
+  }
   var userName = $("#userName").val();
   userArray.push(userName);
   localStorage.setItem("Employees", JSON.stringify(userArray));
@@ -53,6 +76,12 @@ $("#form").on("submit", function (e) {
   localStorage.setItem("Temperatures", JSON.stringify(tempArray));
 
   timeArray.push(new Date().toLocaleTimeString());
+  function formatTime(i) {
+    //This adds a zero to display time correctly
+    return i < 10 ? "0" + i : i;
+  }
+  time = formatTime(date.getHours()) + ":" + formatTime(date.getMinutes());
+  timeArray.push(time);
   localStorage.setItem("Time Logged", JSON.stringify(timeArray));
 
   recall();
@@ -78,3 +107,19 @@ $("#emailButton").on("click", function () {
   localStorage.setItem("Emails", JSON.stringify(emailArray));
   $("#submit-email")[0].reset();
 });
+
+
+function randomImage() {
+  var queryURL = "https://api.pexels.com/v1/search?query=restaurant";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader ("Authorization", "563492ad6f9170000100000143a58219eff2429d82e432a798f5c2b3");
+  },
+  }).then(function(response) {
+    console.log(response);
+  });
+}
+

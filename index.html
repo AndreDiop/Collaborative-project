@@ -20,19 +20,18 @@
     ></script>
   </head>
   <body>
-    <div class="container">
+    <div class="container text-center">
       <h1>Food Service Log Manager</h1>
       <p>
         <em>Date: <span id="date"></span></em>
       </p>
-      <div class="row mb-3">
+      <div class="row mb-3 justify-content-center">
         <div class="col-lg-12">
           <form id="form">
             <div class="form-group">
-              <label for="sel1">Equipment:</label>
+              <label for="sel1">Equipment ID:</label>
               <select class="form-control" id="selector">
-                <option></option>
-                <!-- This empty value is so that the user must select equipment -->
+                <option value="" selected disabled>Please Select From List</option>
                 <option value="Walk-in Freezer">Walk-in freezer</option>
                 <option value="Cold Storage">Cold Storage</option>
                 <option value="Pastry Station Cooler">
@@ -43,27 +42,26 @@
                 </option>
               </select>
             </div>
-            <div class="row mb-3">
-              <div class="col-lg-12">
-                <label for="name">Name</label>
+                <br>
+                <label for="name">Employee Name:</label>
                 <input
                   name="name"
                   id="userName"
                   type="text"
                   class="form-control"
-                  placeholder="name"
+                  placeholder="Enter Your Name"
                 />
               </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-3 justify-content-center">
               <div class="col-lg-12">
-                <label for="temp">Temperature</label>
+                <label for="temp">Temperature:</label>
                 <input
                   name="temp"
                   id="temperature"
                   type="text"
                   class="form-control"
-                  placeholder="°"
+                  placeholder="Enter Temp in °F"
                 />
               </div>
             </div>
@@ -124,5 +122,3 @@
     <script src="./assets/script.js" async defer></script>
   </body>
 </html>
-
-<!-- THIS IS PAUL THIS IS JUST FOR TESTING GIT STUFF -->
