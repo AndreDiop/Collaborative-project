@@ -12,46 +12,140 @@
     <br />
     <div>TESTING AREA</div>
     <div style="width: 50%">
-      <canvas id="mycanvas"></canvas>
+      <canvas id="line-chart" width="800" height="450"></canvas>
     </div>
-    <script
+    <!-- <script
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
       integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
 
     <!-- QuickChart TEST -->
     <script>
-      var ctx_live = document.getElementById("mycanvas");
-      var myChart = new Chart(ctx_live, {
-        type: "pie",
+      var walkInFreezer = [];
+      var coldStorage = [];
+      var pastryStationCooler = [];
+      var grillStationCooler = [];
+
+      for (
+        i = 0;
+        i < JSON.parse(localStorage.getItem("Equipment")).length;
+        i++
+      ) {
+        console.log(JSON.parse(localStorage.getItem("Equipment")));
+        if (
+          JSON.parse(localStorage.getItem("Equipment"))[i] == "Walk-in Freezer"
+        ) {
+          console.log(1);
+          storeCoordinate(
+            JSON.parse(localStorage.getItem("Time Logged"))[i],
+            JSON.parse(localStorage.getItem("Temperatures"))[i],
+            walkInFreezer
+          );
+        } else if (
+          JSON.parse(localStorage.getItem("Equipment"))[i] == "Cold Storage"
+        ) {
+          console.log(2);
+          storeCoordinate(
+            JSON.parse(localStorage.getItem("Time Logged"))[i],
+            JSON.parse(localStorage.getItem("Temperatures"))[i],
+            coldStorage
+          );
+        } else if (
+          JSON.parse(localStorage.getItem("Equipment"))[i] ==
+          "Pastry station Cooler"
+        ) {
+          console.log(3);
+          storeCoordinate(
+            JSON.parse(localStorage.getItem("Time Logged"))[i],
+            JSON.parse(localStorage.getItem("Temperatures"))[i],
+            pastryStationCooler
+          );
+        } else {
+          console.log(4);
+          storeCoordinate(
+            JSON.parse(localStorage.getItem("Time Logged"))[i],
+            JSON.parse(localStorage.getItem("Temperatures"))[i],
+            grillStationCooler
+          );
+        }
+      }
+
+
+      var timeFormat = "h:mm:ss";
+      new Chart(document.getElementById("line-chart"), {
+        type: "line",
         data: {
-          labels: ["OK", "WARNING", "CRITICAL", "UNKNOWN"],
           datasets: [
             {
-              label: "# of Tomatoes",
-              data: [12, 10, 3, 5],
-              backgroundColor: [
-                "rgba(255, 99, 132, 0.5)",
-                "rgba(54, 162, 235, 0.2)",
-                "rgba(255, 206, 86, 0.2)",
-                "rgba(75, 192, 192, 0.2)",
-              ],
-              borderColor: [
-                "rgba(255,99,132,1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-              ],
-              borderWidth: 1,
+              data: walkInFreezer,
+              label: "Walk-in freezer",
+              borderColor: "#3e95cd",
+              fill: false,
+            },
+            {
+              data: coldStorage,
+              label: "Cold Storage",
+              borderColor: "#8e5ea2",
+              fill: false,
+            },
+            {
+              data: pastryStationCooler,
+              label: "Pastry station Cooler",
+              borderColor: "#3cba9f",
+              fill: false,
+            },
+            {
+              data: grillStationCooler,
+              label: "Grill station Cooler",
+              borderColor: "#e8c3b9",
+              fill: false,
             },
           ],
         },
         options: {
-          cutoutPercentage: 40,
-          responsive: false,
+          responsive: true,
+          title: {
+            display: true,
+            text: "Chart.js Time Scale",
+          },
+          scales: {
+            xAxes: [
+              {
+                type: "time",
+                time: {
+                  format: timeFormat,
+                  tooltipFormat: "ll",
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: "Date",
+                },
+                ticks: {
+                  autoSkip: false,
+                  maxRotation: 45,
+                  minRotation: 45,
+                }
+              }
+            ],
+            yAxes: [
+              {
+                scaleLabel: {
+                  display: true,
+                  labelString: "value",
+                }
+              }
+            ]
+          },
         },
       });
+
+      function storeCoordinate(xVal, yVal, array) {
+        array.push({ x: xVal, y: yVal });
+      }
     </script>
     <script src="" async defer></script>
   </body>

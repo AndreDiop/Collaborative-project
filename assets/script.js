@@ -4,7 +4,7 @@ date = new Date(); // Global date variable
 date.toString().slice(0, 24);
 $("#date").text(date);
 
-time = date.toLocaleTimeString(); // Global time variable
+//time = date.toLocaleTimeString(); // Global time variable
 
 // JS VARIABLES
 tempArray = [];
@@ -24,15 +24,18 @@ function recall() {
   var tempLog = JSON.parse(localStorage.getItem("Temperatures"));
   var nameLog = JSON.parse(localStorage.getItem("Employees"));
   //  Items from local storage are displayed here
+  if(localStorage.getItem("Equipment")!=null){
   $(".timeDisplay").text(timeLog[0]);
   $(".equipmentDisplay").text(equipmentLog[0]);
   $(".tempDisplay").text(tempLog[0]);
   $(".nameDisplay").text(nameLog[0]);
+  }
 }
 
 // EVENT LISTENERS
 // This listens to the change on the selector and logs the change to local storage
 $("select").on("change", function () {
+  console.log("EQUIP!!")
   var equipment = this.value;
   equipmentArray.push(equipment);
   localStorage.setItem("Equipment", JSON.stringify(equipmentArray));
@@ -49,7 +52,7 @@ $("#form").on("submit", function (e) {
   tempArray.push(tempInput);
   localStorage.setItem("Temperatures", JSON.stringify(tempArray));
 
-  timeArray.push(time);
+  timeArray.push(new Date().toLocaleTimeString());
   localStorage.setItem("Time Logged", JSON.stringify(timeArray));
 
   recall();
