@@ -46,6 +46,9 @@
 .title-white {
   color: #fff;
 }
+.col-lg-12 {
+    width: 60%;
+};
 
 @media only screen and (max-width: 600px) {
   .title {
@@ -62,4 +65,11 @@
   .btn-orange {
     margin-right: 1em;
   }
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+      width: 100%;
+    }
 }
