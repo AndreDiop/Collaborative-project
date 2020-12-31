@@ -12,17 +12,15 @@ logArray = [];
 
 $(document).ready(function () {
   randomImage();
-  if(localStorage.getItem("Equipment")!=null){
+  if (localStorage.getItem("Equipment") !== null) {
     recall(); //Function call to display locally stored data
   }
 });
 
 //This function retrieves items from localStorage
 function recall() {
-
   var lastLog = JSON.parse(localStorage.getItem("Log")); //  Items from local storage are displayed here
   for (i = 0; i < lastLog.length; i++) {
-
     $("#dataTable")
       .find("tbody")
       .append(
@@ -58,8 +56,6 @@ $("#form").on("submit", function (e) {
     localStorage.setItem("Log", JSON.stringify(logArray));
     recall();
   }
-
-
 });
 // The submit log links to the results.html
 $("#viewLog").on("click", function () {
