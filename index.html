@@ -35,7 +35,6 @@
             </h1>
           </div>
         </div>
-
         <div class="col-md-6 no-gutters">
           <div class="right">
             <p>
@@ -81,9 +80,9 @@
                   />
                 </div>
               </div>
-
               <button id="addToLog" type="submit" class="btn btn-lg btn-orange">
                 Add To Log
+
               </button>
               <a href="./results.html">
                 <button
@@ -95,7 +94,6 @@
                 </button>
               </a>
             </form>
-
             <!-- toast alert on add button -->
             <div
               aria-live="polite"
@@ -127,7 +125,6 @@
         </div>
       </div>
     </div>
-
     <!-- bootstrap scripts for the toast notification -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
@@ -139,7 +136,14 @@
       integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
       crossorigin="anonymous"
     ></script>
-
+    <script>
+      $(document).ready(function () {
+        $("#addToLog").click(function () {
+          $(".toast").toast("show");
+        });
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/script.js" async defer></script>
   </body>
 </html>
