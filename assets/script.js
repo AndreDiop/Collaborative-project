@@ -1,9 +1,9 @@
 // DOM VARIABLES
 
-date = new Date(); // Global date variable
-date.toString().slice(0, 24);
+date = moment().format("LL"); // Global date variable
+
 $("#date").text(date);
-$("#today").text(date);
+$("#today").text("Temperature log for " + date);
 
 // JS VARIABLES
 logArray = [];
@@ -41,13 +41,19 @@ $("#form").on("submit", function (e) {
 
   var temperatureCheck = {
     Equipment: $("#selector").val(),
-    Time: new Date().toLocaleTimeString(),
+    Time: moment().format("LTS"),
     Temperature: $("#temperature").val(),
     Employee: $("#userName").val(),
   };
-  logArray.push(temperatureCheck);
-  localStorage.setItem("Log", JSON.stringify(logArray));
-  recall();
+  if (temperatureCheck.Temperature === "") {
+    console.log("error", "Temperature field cannot be blank");
+  } else if (temperatureCheck.Employee === "") {
+    console.log("error", "Name cannot be blank");
+  } else {
+    logArray.push(temperatureCheck);
+    localStorage.setItem("Log", JSON.stringify(logArray));
+    recall();
+  }
 });
 // The submit log links to the results.html
 $("#viewLog").on("click", function () {
