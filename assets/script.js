@@ -16,7 +16,9 @@ timeArray = [];
 
 $(document).ready(function () {
   randomImage();
-  recall(); //Function call to display locally stored data
+  if(localStorage.getItem("Equipment")!=null){
+    recall(); //Function call to display locally stored data
+  }
 });
 
 //This function retrieves items from localStorage
@@ -31,6 +33,7 @@ function recall() {
   $(".equipmentDisplay").text(equipmentLog[0]);
   $(".tempDisplay").text(tempLog[0]);
   $(".nameDisplay").text(nameLog[0]);
+  }
   for (i = 0; i < timeLog.length; i++) {
     $("#dataTable")
       .find("tbody")
@@ -71,17 +74,18 @@ $("#form").on("submit", function (e) {
   userArray.push(userName);
   localStorage.setItem("Employees", JSON.stringify(userArray));
 
-  var tempInput = $("#temperature").val();
-  tempArray.push(tempInput);
-  localStorage.setItem("Temperatures", JSON.stringify(tempArray));
+  // var tempInput = $("#temperature").val();
+  // tempArray.push(tempInput);
+  // localStorage.setItem("Temperatures", JSON.stringify(tempArray));
 
   timeArray.push(new Date().toLocaleTimeString());
   function formatTime(i) {
     //This adds a zero to display time correctly
     return i < 10 ? "0" + i : i;
   }
-  time = formatTime(date.getHours()) + ":" + formatTime(date.getMinutes());
-  timeArray.push(time);
+  // time = formatTime(date.getHours()) + ":" + formatTime(date.getMinutes());
+  // console.log(time);
+  // timeArray.push(time);
   localStorage.setItem("Time Logged", JSON.stringify(timeArray));
 
   recall();
