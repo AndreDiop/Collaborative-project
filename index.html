@@ -23,15 +23,18 @@
     <div class="container text-center">
       <h1>Food Service Log Manager</h1>
       <p>
-        <em>Date: <span id="date"></span></em>
+        <em> <span id="date"></span></em>
       </p>
       <div class="row mb-3 justify-content-center">
         <div class="col-lg-12">
           <form id="form">
             <div class="form-group">
-              <label for="sel1">Equipment ID:</label>
+              <label for="sel1">Equipment:</label>
               <select class="form-control" id="selector">
-                <option value="" selected disabled>Please Select From List</option>
+                <option value="" selected disabled>
+                  Please Select From List
+                </option>
+                <!-- This empty value is so that the user must select equipment -->
                 <option value="Walk-in Freezer">Walk-in freezer</option>
                 <option value="Cold Storage">Cold Storage</option>
                 <option value="Pastry Station Cooler">
@@ -42,8 +45,9 @@
                 </option>
               </select>
             </div>
-                <br>
-                <label for="name">Employee Name:</label>
+            <div class="row mb-3 justify-content-center">
+              <div class="col-lg-12">
+                <label for="name">Employee Name</label>
                 <input
                   name="name"
                   id="userName"
@@ -65,7 +69,6 @@
                 />
               </div>
             </div>
-
             <button id="addToLog" type="submit" class="btn btn-primary">
               Add To Log
             </button>
@@ -82,6 +85,7 @@
             aria-atomic="true"
             class="d-flex justify-content-center align-items-center w-100"
           >
+            <!-- Then put toasts within -->
             <div
               class="toast"
               role="alert"
@@ -106,7 +110,6 @@
         </div>
       </div>
     </div>
-
     <!-- bootstrap scripts for the toast notification -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
@@ -118,7 +121,14 @@
       integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
       crossorigin="anonymous"
     ></script>
-
+    <script>
+      $(document).ready(function () {
+        $("#addToLog").click(function () {
+          $(".toast").toast("show");
+        });
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/script.js" async defer></script>
   </body>
 </html>
