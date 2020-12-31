@@ -14,6 +14,24 @@ emailArray = [];
 timeArray = [];
 // FUNCTION DEFINITIONS
 
+// Function for Unsplash API Call
+function randomImage() {
+    var randomNumber = Math.floor(Math.random() * 49);
+    var clientID = "QGc0QQgaK_Jmsh9D8YNpkse2tcwaakjKMx7JeY4Qv-o";
+    var queryURL = "https://api.unsplash.com/search/photos?client_id=" + clientID + "&query=restaurant&page=1&per_page=50";
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function(response) {
+    console.log(randomNumber);
+    console.log(response);
+    console.log(response.results[randomNumber].urls.full);
+
+    // Un-Comment the below code to test if the response is working.
+    // $("#test-area").attr("src", response.results[randomNumber].urls.regular);
+  });
+};
+
 $(document).ready(function () {
   randomImage();
   recall(); //Function call to display locally stored data
@@ -45,7 +63,7 @@ function recall() {
       );
   }
 }
-
+}
 // EVENT LISTENERS
 // This listens to the change on the selector and logs the change to local storage
 $("select").on("change", function () {
@@ -107,19 +125,3 @@ $("#emailButton").on("click", function () {
   localStorage.setItem("Emails", JSON.stringify(emailArray));
   $("#submit-email")[0].reset();
 });
-
-
-function randomImage() {
-  var queryURL = "https://api.pexels.com/v1/search?query=restaurant";
-
-  $.ajax({
-    url: queryURL,
-    method: "GET",
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader ("Authorization", "563492ad6f9170000100000143a58219eff2429d82e432a798f5c2b3");
-  },
-  }).then(function(response) {
-    console.log(response);
-  });
-}
-
