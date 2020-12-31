@@ -4,6 +4,8 @@ date = new Date(); // Global date variable
 date.toString().slice(0, 24);
 $("#date").text(date);
 
+//time = date.toLocaleTimeString(); // Global time variable
+
 // JS VARIABLES
 tempArray = [];
 userArray = [];
@@ -12,7 +14,8 @@ emailArray = [];
 timeArray = [];
 // FUNCTION DEFINITIONS
 
-$(document).ready(function() {
+$(document).ready(function () {
+  randomImage();
   recall(); //Function call to display locally stored data
 });
 
@@ -23,6 +26,11 @@ function recall() {
   var tempLog = JSON.parse(localStorage.getItem("Temperatures"));
   var nameLog = JSON.parse(localStorage.getItem("Employees"));
   //  Items from local storage are displayed here
+  if(localStorage.getItem("Equipment")!=null){
+  $(".timeDisplay").text(timeLog[0]);
+  $(".equipmentDisplay").text(equipmentLog[0]);
+  $(".tempDisplay").text(tempLog[0]);
+  $(".nameDisplay").text(nameLog[0]);
   for (i = 0; i < timeLog.length; i++) {
     $("#dataTable")
       .find("tbody")
@@ -40,7 +48,8 @@ function recall() {
 
 // EVENT LISTENERS
 // This listens to the change on the selector and logs the change to local storage
-$("select").on("change", function() {
+$("select").on("change", function () {
+  console.log("EQUIP!!")
   var equipment = this.value;
   equipmentArray.push(equipment);
   localStorage.setItem("Equipment", JSON.stringify(equipmentArray));
@@ -61,6 +70,11 @@ $("#form").on("submit", function(e) {
   userArray.push(userName);
   localStorage.setItem("Employees", JSON.stringify(userArray));
 
+  var tempInput = $("#temperature").val();
+  tempArray.push(tempInput);
+  localStorage.setItem("Temperatures", JSON.stringify(tempArray));
+
+  timeArray.push(new Date().toLocaleTimeString());
   function formatTime(i) {
     //This adds a zero to display time correctly
     return i < 10 ? "0" + i : i;
@@ -116,3 +130,17 @@ $(function() {
     }
   });
 });
+
+function randomImage() {
+  var queryURL = "https://api.pexels.com/v1/search?query=restaurant";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader ("Authorization", "563492ad6f9170000100000143a58219eff2429d82e432a798f5c2b3");
+  },
+  }).then(function(response) {
+    console.log(response);
+  });
+}
