@@ -3,8 +3,7 @@
 date = new Date(); // Global date variable
 date.toString().slice(0, 24);
 $("#date").text(date);
-
-//time = date.toLocaleTimeString(); // Global time variable
+$("#today").text(date);
 
 // JS VARIABLES
 logArray = [];
@@ -18,38 +17,26 @@ $(document).ready(function () {
 
 //This function retrieves items from localStorage
 function recall() {
-  for (i = 0; i < logArray.length; i++) {
-      //  Items from local storage are displayed here
-  var lastLog = JSON.parse(localStorage.getItem("Log"));
-
-  console.log(lastLog);
-  console.log(lastLog[i].Equipment);
-  console.log(lastLog[i].Time);
-  console.log(lastLog[i].Temperature);
-  console.log(lastLog[i].Employee);
-  // var equipmentLog = JSON.parse(lastLog[1].Equipment);
-  // var timeLog = JSON.parse(localStorage.getItem(lastLog.Time));
-  // var tempLog = JSON.parse(localStorage.getItem(lastLog.Temperature));
-  // var nameLog = JSON.parse(localStorage.getItem(lastLog.Employee));
-
+  var lastLog = JSON.parse(localStorage.getItem("Log")); //  Items from local storage are displayed here
+  for (i = 0; i < lastLog.length; i++) {
     $("#dataTable")
       .find("tbody")
       .append(
         $("<tr>").append(
           $("<td>").append([1 + i]),
-          $("<td>").append(timeLog[i]),
-          $("<td>").append(equipmentLog[i]),
-          $("<td>").append(tempLog[i]),
-          $("<td>").append(nameLog[i])
+          $("<td>").append(lastLog[i].Time),
+          $("<td>").append(lastLog[i].Equipment),
+          $("<td>").append(lastLog[i].Temperature),
+          $("<td>").append(lastLog[i].Employee)
         )
       );
   }
 }
 // EVENT LISTENERS
-// This listens to the change on the selector and logs the change to local storage
 
-// Users enter their name and temperature here and it is saved to local storage along with the time logged
 $("#form").on("submit", function (e) {
+  // Users enter their name and temperature here and it is saved to local storage along with the time logged
+
   e.preventDefault();
 
   var temperatureCheck = {
