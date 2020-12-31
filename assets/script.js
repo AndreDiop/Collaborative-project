@@ -74,6 +74,9 @@ $("#emailButton").on("click", function() {
 
 // form validation
 $(function() {
+  var form = $("form[name='log-form']").length;
+  console.log(form);
+  if(!(form)) return
   $("form[name='log-form']").validate({
     rules: {
       name: {
@@ -91,17 +94,8 @@ $(function() {
       equipment: "Please select equipment",
       temp: "Please enter a temperature"
     },
-    // Make sure the form is submitted to the destination defined
-    // in the "action" attribute of the form when valid
     submitHandler: function(form) {
-      //submit form
-      form.submit();
-      //toast popup when Add Log button clicked
-      $("#addToLog").click(function(e) {
-        e.preventDefault();
-        $(".toast").toast("show");
-        console.log("submitted");
-      });
+      $(".toast").toast("show");
     }
   });
 });
