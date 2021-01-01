@@ -2,14 +2,79 @@
 #username-error,
 #equipment-error {
     color:red;
+}  
+.container {
+  width: 100%;
+  margin: 0px !important;
+  padding: 0px !important;
+  max-width: unset;
+}
+.left,
+.right {
+  height: 100vh;
+  width: 100%;
+}
+.left {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(8, 8, 8, 0.85),
+      rgba(15, 15, 15, 0.85)
+    ),
+    url("https://images.pexels.com/photos/3434523/pexels-photo-3434523.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.right {
+    padding: 3em;
+}
+.btn-orange {
+  color: #fff;
+  background-color: orange;
+  border-color: orange;
+  margin-right: 2em;
+}
+.btn-orange:hover {
+  color: #fff;
+  background-color: #ff9000;
+}
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  padding-top: 35%;
+}
+.title-orange {
+  color: #ff9000;
+}
+.title-white {
+  color: #fff;
 }
 .col-lg-12 {
     width: 60%;
 };
+
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 2rem;
+    padding-top: 25%;
+  }
+  .left {
+    background-size: cover;
+    height: 400px;
+  }
+  .right {
+    padding: 2em;
+  }
+  .btn-orange {
+    margin-right: 1em;
+  }
+}
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     [class*="col-"] {
       width: 100%;
     }
-  }
+}
