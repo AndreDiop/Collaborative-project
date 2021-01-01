@@ -10,6 +10,7 @@ logArray = [];
 
 // FUNCTION DEFINITIONS
 
+
 // Function for Unsplash API Call
 function randomImage() {
     var randomNumber = Math.floor(Math.random() * 49);
@@ -29,18 +30,17 @@ function randomImage() {
 };
 
 $(document).ready(function () {
+
   randomImage();
-  if(localStorage.getItem("Equipment")!=null){
+  if (localStorage.getItem("Equipment") !== null) {
     recall(); //Function call to display locally stored data
   }
 });
 
 //This function retrieves items from localStorage
 function recall() {
-
   var lastLog = JSON.parse(localStorage.getItem("Log")); //  Items from local storage are displayed here
   for (i = 0; i < lastLog.length; i++) {
-
     $("#dataTable")
       .find("tbody")
       .append(
@@ -54,20 +54,23 @@ function recall() {
       );
   }
 }
-}
 
 // EVENT LISTENERS
-
-$("#form").on("submit", function (e) {
+$("#form").on("submit", function(e) {
   // Users enter their name and temperature here and it is saved to local storage along with the time logged
 
   e.preventDefault();
+  var tempInput = $("#temperature").val();
+  // fixes user validate error in console
+  if (isNaN(tempInput)) {
+    return;
+  }
 
   var temperatureCheck = {
     Equipment: $("#selector").val(),
     Time: moment().format("LTS"),
     Temperature: $("#temperature").val(),
-    Employee: $("#userName").val(),
+    Employee: $("#userName").val()
   };
   if (temperatureCheck.Temperature === "") {
     console.log("error", "Temperature field cannot be blank");
@@ -78,27 +81,49 @@ $("#form").on("submit", function (e) {
     localStorage.setItem("Log", JSON.stringify(logArray));
     recall();
   }
-
-
 });
+
 // The submit log links to the results.html
-$("#viewLog").on("click", function () {
+$("#viewLog").on("click", function() {
   window.location.href = "./results.html";
 });
 
-//toast popup when Add Log clicked
-$("#addToLog").click(function () {
-  $(".toast").toast("show");
-});
-
 // Home button function
-$("#homeButton").on("click", function () {
+$("#homeButton").on("click", function() {
   window.location.href = "./index.html";
 });
 
-$("#emailButton").on("click", function () {
+$("#emailButton").on("click", function() {
   var emailInput = $("#emailInput").val();
   emailArray.push(emailInput);
   localStorage.setItem("Emails", JSON.stringify(emailArray));
   $("#submit-email")[0].reset();
+});
+
+// form validation
+$(function() {
+  var form = $("form[name='log-form']").length;
+  console.log(form);
+  if (!form) return;
+  $("form[name='log-form']").validate({
+    rules: {
+      name: {
+        required: true
+      },
+      temp: {
+        required: true
+      },
+      equipment: {
+        required: true
+      }
+    },
+    messages: {
+      name: "Please enter your name",
+      equipment: "Please select equipment",
+      temp: "Please enter a temperature"
+    },
+    submitHandler: function(form) {
+      $(".toast").toast("show");
+    }
+  });
 });
