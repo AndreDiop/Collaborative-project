@@ -2,7 +2,9 @@
 
 date = moment().format("LL"); // Global date variable
 
-$("#date").text(date);
+$("#date").text(
+  "Hello todays date is " + date + " please complete the log below."
+);
 $("#today").text("Temperature log for " + date);
 
 // JS VARIABLES
@@ -20,9 +22,9 @@ function randomImage() {
     url: queryURL,
     method: "GET",
   }).then(function(response) {
-    console.log(randomNumber);
+    var newBackground = response.results[randomNumber].urls.full;
     console.log(response);
-    console.log(response.results[randomNumber].urls.full);
+    $("#bg-image").css("background-image", "url(" + newBackground + ")");
 
     // Un-Comment the below code to test if the response is working.
     // $("#test-area").attr("src", response.results[randomNumber].urls.regular);
@@ -30,8 +32,8 @@ function randomImage() {
 };
 
 $(document).ready(function () {
-
   randomImage();
+
   if (localStorage.getItem("Equipment") !== null) {
     recall(); //Function call to display locally stored data
   }
