@@ -2,7 +2,9 @@
 
 date = moment().format("LL"); // Global date variable
 
-$("#date").text(date);
+$("#date").text(
+  "Hello todays date is " + date + " please complete the log below."
+);
 $("#today").text("Temperature log for " + date);
 
 // JS VARIABLES
