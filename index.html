@@ -68,62 +68,62 @@
                   />
                 </div>
               </div>
-              <div class="row mb-3">
-                <div class="col-lg-12">
-                  <label for="temp">Temperature:</label>
-                  <input
-                    name="temp"
-                    id="temperature"
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Temp in °F"
-                  />
-                </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-lg-12">
+                <label for="temp">Temperature:</label>
+                <input
+                  name="temp"
+                  id="temperature"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Temp in °F"
+                />
               </div>
-              <button id="addToLog" type="submit" class="btn btn-lg btn-orange">
-                Add To Log
+            </div>
+            <button id="addToLog" type="submit" class="btn btn-lg btn-orange">
+              Add To Log
+            </button>
+            <a href="./results.html">
+              <button id="viewLog" type="button" class="btn btn-lg btn-orange">
+                View Log
               </button>
-              <a href="./results.html">
-                <button
-                  id="viewLog"
-                  type="button"
-                  class="btn btn-lg btn-orange"
-                >
-                  View Log
-                </button>
-              </a>
-            </form>
-            <!-- toast alert on add button -->
+            </a>
+          </form>
+          <!-- toast alert on add button -->
+          <div
+            id="toast-popup"
+            aria-live="polite"
+            aria-atomic="true"
+            class="d-flex justify-content-center align-items-center w-100"
+          >
             <div
-              aria-live="polite"
+              class="toast"
+              role="alert"
+              aria-live="assertive"
               aria-atomic="true"
-              class="d-flex justify-content-center align-items-center w-100"
             >
-              <div
-                class="toast"
-                role="alert"
-                aria-live="assertive"
-                aria-atomic="true"
-              >
-                <div class="toast-header">
-                  <strong class="me-auto">Added to the Log!</strong>
-                  <small></small>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="toast"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="toast-body">
-                  Your results have been successfully added to the log.
-                </div>
+              <div class="toast-header">
+                <strong class="me-auto">Added to the Log!</strong>
+                <small></small>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="toast"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="toast-body">
+                Your results have been successfully added to the log.
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- TESTING AREA FOR UNSPLASH -->
+    <img src="" id="test-area"/>
+
     <!-- bootstrap scripts for the toast notification -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
@@ -135,13 +135,8 @@
       integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
       crossorigin="anonymous"
     ></script>
-    <script>
-      $(document).ready(function () {
-        $("#addToLog").click(function () {
-          $(".toast").toast("show");
-        });
-      });
-    </script>
+    <!-- validate user input plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/script.js" async defer></script>
   </body>
