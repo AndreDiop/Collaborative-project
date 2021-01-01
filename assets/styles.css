@@ -1,6 +1,6 @@
 #temperature-error, 
-#username-error,
-#equipment-error {
+#userName-error,
+#selector-error {
     color:red;
 }  
 .container {
