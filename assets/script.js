@@ -105,7 +105,6 @@ $("#emailButton").on("click", function() {
 // form validation
 $(function() {
   var form = $("form[name='log-form']").length;
-  console.log(form);
   if (!form) return;
   $("form[name='log-form']").validate({
     rules: {
