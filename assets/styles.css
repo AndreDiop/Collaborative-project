@@ -3,6 +3,7 @@
 #selector-error {
   color: red;
 }
+
 .container {
   width: 100%;
   margin: 0px !important;
@@ -61,14 +62,24 @@
 .title-white {
   color: #fff;
 }
+.col-md-6,
+.col-sm-6 {
+  background-color: antiquewhite;
+}
+.navbar {
+  background-color: #e8cfa1;
+}
 .col-lg-12 {
   width: 60%;
 }
 
 #homeButton,
-#addToLog {
+#viewLog {
   margin-left: auto;
   margin-right: auto;
+}
+#employeeName {
+  padding-top: 15px;
 }
 
 @media only screen and (max-width: 600px) {

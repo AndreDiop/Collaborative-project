@@ -3,7 +3,7 @@
 date = moment().format("LL"); // Global date variable
 
 $("#date").text(
-  "Hello! Today's date is " + date + " please complete the log below."
+  "Hello! Today's date is " + date + ". Please complete the log below;"
 );
 $("#today").text("Temperature log for " + date);
 
