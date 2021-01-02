@@ -39,6 +39,16 @@
   color: #fff;
   background-color: #ff9000;
 }
+.btn-outline-orange {
+  color: #ff9000;
+  border-color: #ff9000;
+  padding: .5rem 2rem .5rem 2rem;
+}
+.btn-outline-orange:hover {
+  color: #fff;
+  background: #ff9000;
+  border-color: orange
+}
 .title {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
