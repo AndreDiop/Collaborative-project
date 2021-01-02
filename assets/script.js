@@ -3,7 +3,7 @@
 date = moment().format("LL"); // Global date variable
 
 $("#date").text(
-  "Hello todays date is " + date + " please complete the log below."
+  "Hello! Today's date is " + date + ". Please complete the log below;"
 );
 $("#today").text("Temperature log for " + date);
 
@@ -12,16 +12,18 @@ logArray = [];
 
 // FUNCTION DEFINITIONS
 
-
 // Function for Unsplash API Call
 function randomImage() {
-    var randomNumber = Math.floor(Math.random() * 49);
-    var clientID = "QGc0QQgaK_Jmsh9D8YNpkse2tcwaakjKMx7JeY4Qv-o";
-    var queryURL = "https://api.unsplash.com/search/photos?client_id=" + clientID + "&query=restaurant&page=1&per_page=50";
+  var randomNumber = Math.floor(Math.random() * 49);
+  var clientID = "QGc0QQgaK_Jmsh9D8YNpkse2tcwaakjKMx7JeY4Qv-o";
+  var queryURL =
+    "https://api.unsplash.com/search/photos?client_id=" +
+    clientID +
+    "&query=restaurant&page=1&per_page=50";
   $.ajax({
     url: queryURL,
     method: "GET",
-  }).then(function(response) {
+  }).then(function (response) {
     var newBackground = response.results[randomNumber].urls.full;
     console.log(response);
     $("#bg-image").css("background-image", "url(" + newBackground + ")");
@@ -29,7 +31,7 @@ function randomImage() {
     // Un-Comment the below code to test if the response is working.
     // $("#test-area").attr("src", response.results[randomNumber].urls.regular);
   });
-};
+}
 
 $(document).ready(function () {
   randomImage();
@@ -58,7 +60,7 @@ function recall() {
 }
 
 // EVENT LISTENERS
-$("#form").on("submit", function(e) {
+$("#form").on("submit", function (e) {
   // Users enter their name and temperature here and it is saved to local storage along with the time logged
 
   e.preventDefault();
@@ -72,7 +74,7 @@ $("#form").on("submit", function(e) {
     Equipment: $("#selector").val(),
     Time: moment().format("LTS"),
     Temperature: $("#temperature").val(),
-    Employee: $("#userName").val()
+    Employee: $("#userName").val(),
   };
   if (temperatureCheck.Temperature === "") {
     console.log("error", "Temperature field cannot be blank");
@@ -86,16 +88,16 @@ $("#form").on("submit", function(e) {
 });
 
 // The submit log links to the results.html
-$("#viewLog").on("click", function() {
+$("#viewLog").on("click", function () {
   window.location.href = "./results.html";
 });
 
 // Home button function
-$("#homeButton").on("click", function() {
+$("#homeButton").on("click", function () {
   window.location.href = "./index.html";
 });
 
-$("#emailButton").on("click", function() {
+$("#emailButton").on("click", function () {
   var emailInput = $("#emailInput").val();
   emailArray.push(emailInput);
   localStorage.setItem("Emails", JSON.stringify(emailArray));
@@ -103,30 +105,30 @@ $("#emailButton").on("click", function() {
 });
 
 // form validation
-$(function() {
+$(function () {
   var form = $("form[name='log-form']").length;
   console.log(form);
   if (!form) return;
   $("form[name='log-form']").validate({
     rules: {
       name: {
-        required: true
+        required: true,
       },
       temp: {
-        required: true
+        required: true,
       },
       equipment: {
-        required: true
-      }
+        required: true,
+      },
     },
     messages: {
       name: "Please enter your name",
       equipment: "Please select equipment",
-      temp: "Please enter a temperature"
+      temp: "Please enter a temperature",
     },
-    submitHandler: function(form) {
+    submitHandler: function (form) {
       $(".toast").toast("show");
       console.log("toast");
-    }
+    },
   });
 });
