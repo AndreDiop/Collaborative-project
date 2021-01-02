@@ -1,8 +1,8 @@
-#temperature-error, 
+#temperature-error,
 #userName-error,
 #selector-error {
-    color:red;
-}  
+  color: red;
+}
 .container {
   width: 100%;
   margin: 0px !important;
@@ -42,12 +42,12 @@
 .btn-outline-orange {
   color: #ff9000;
   border-color: #ff9000;
-  padding: .5rem 2rem .5rem 2rem;
+  padding: 0.5rem 2rem 0.5rem 2rem;
 }
 .btn-outline-orange:hover {
   color: #fff;
   background: #ff9000;
-  border-color: orange
+  border-color: orange;
 }
 .title {
   font-family: "Montserrat", sans-serif;
@@ -65,7 +65,8 @@
   width: 60%;
 }
 
-#homeButton {
+#homeButton,
+#addToLog {
   margin-left: auto;
   margin-right: auto;
 }
