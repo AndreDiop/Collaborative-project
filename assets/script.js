@@ -9,6 +9,8 @@ $("#today").text("Temperature log for " + date);
 
 // JS VARIABLES
 logArray = [];
+var lastLog = JSON.parse(localStorage.getItem("Log")); //  Items from local storage are displayed here
+
 
 // FUNCTION DEFINITIONS
 
@@ -25,25 +27,42 @@ function randomImage() {
     method: "GET",
   }).then(function (response) {
     var newBackground = response.results[randomNumber].urls.full;
-    console.log(response);
-    $("#bg-image").css("background-image", "url(" + newBackground + ")");
+    $(".unsplash-bg").css("background-image", "url(" + newBackground + ")");
+  })
+};
 
-    // Un-Comment the below code to test if the response is working.
-    // $("#test-area").attr("src", response.results[randomNumber].urls.regular);
-  });
-}
+// Function for EmailJS API Call
+function sendEmail() {
+  var savedLogs = localStorage.getItem("Log");
+  var data = {
+      service_id: 'default_service',
+      template_id: 'template_rhcuybo',
+      user_id: 'user_C4TQau4eepfDVHoV7waFq',
+      template_params: {
+          "message": savedLogs,
+      }
+  };
+  $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'application/json'
+  }).done(function() {
+      alert('Your mail is sent!');
+  }).fail(function(error) {
+      alert('Oops... ' + JSON.stringify(error));
+  })
+  };
 
 $(document).ready(function () {
   randomImage();
 
-  if (localStorage.getItem("Equipment") !== null) {
-    recall(); //Function call to display locally stored data
+  if (localStorage.getItem("Log") !== null) {
+    recall();
   }
 });
 
 //This function retrieves items from localStorage
 function recall() {
-  var lastLog = JSON.parse(localStorage.getItem("Log")); //  Items from local storage are displayed here
   for (i = 0; i < lastLog.length; i++) {
     $("#dataTable")
       .find("tbody")
@@ -98,16 +117,13 @@ $("#homeButton").on("click", function () {
 });
 
 $("#emailButton").on("click", function () {
-  var emailInput = $("#emailInput").val();
-  emailArray.push(emailInput);
-  localStorage.setItem("Emails", JSON.stringify(emailArray));
-  $("#submit-email")[0].reset();
+  // Un-Comment out the below to make EmailJS live.
+  // sendEmail();
 });
 
 // form validation
 $(function () {
   var form = $("form[name='log-form']").length;
-  console.log(form);
   if (!form) return;
   $("form[name='log-form']").validate({
     rules: {
