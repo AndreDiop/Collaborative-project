@@ -69,9 +69,6 @@
 .navbar {
   background-color: #e8cfa1;
 }
-.col-lg-12 {
-  width: 60%;
-}
 
 #homeButton,
 #viewLog {
@@ -80,6 +77,12 @@
 }
 #employeeName {
   padding-top: 15px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
