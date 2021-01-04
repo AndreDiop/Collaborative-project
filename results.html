@@ -57,7 +57,7 @@
               <tbody></tbody>
             </table>
           </div>
-          <!-- Toast for emailJS -->
+          <!-- Toast for emailJS success-->
           <div
             class="toast"
             id="toast-email"
@@ -81,6 +81,30 @@
               Your results have successfully been emailed!
             </div>
           </div>
+          <!-- Toast for emailJS failure -->
+          <div
+          class="toast"
+          id="toast-fail"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          style="position: absolute; top: 0"
+        >
+          <div class="toast-header" style="background-color: #ff9000">
+            <strong class="me-auto text-white">Email Error!</strong>
+            <button
+              type="button"
+              class="btn-dark ml-2 mb-1 close"
+              data-dismiss="toast"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="toast-body">
+            Your results did NOT send! Confirm all information is correct.
+          </div>
+        </div>
         </div>
       </div>
       <div class="navbar fixed-bottom navbar-light" id="center-button">
