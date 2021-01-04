@@ -85,7 +85,9 @@
 #center-button {
   justify-content: center;
 }
-
+#selector {
+  width: 59%;
+}
 
 /* MEDIA QUERIES */
 @media only screen and (max-width: 600px) {
@@ -108,6 +110,9 @@
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   [class*="col-"] {
+    width: 100%;
+  }
+  #selector {
     width: 100%;
   }
 }
