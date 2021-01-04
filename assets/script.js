@@ -11,7 +11,6 @@ $("#today").text("Temperature log for " + date);
 logArray = [];
 var lastLog = JSON.parse(localStorage.getItem("Log")); //  Items from local storage are displayed here
 
-
 // FUNCTION DEFINITIONS
 
 // Function for Unsplash API Call
@@ -28,36 +27,37 @@ function randomImage() {
   }).then(function (response) {
     var newBackground = response.results[randomNumber].urls.full;
     $(".unsplash-bg").css("background-image", "url(" + newBackground + ")");
-  })
-};
+  });
+}
 
 // Function for EmailJS API Call
 function sendEmail() {
   var savedLogs = localStorage.getItem("Log");
   var data = {
-      service_id: 'default_service',
-      template_id: 'template_rhcuybo',
-      user_id: 'user_C4TQau4eepfDVHoV7waFq',
-      template_params: {
-          "message": savedLogs,
-      }
+    service_id: "default_service",
+    template_id: "template_rhcuybo",
+    user_id: "user_C4TQau4eepfDVHoV7waFq",
+    template_params: {
+      message: savedLogs,
+    },
   };
-  $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
-      type: 'POST',
-      data: JSON.stringify(data),
-      contentType: 'application/json'
-  }).done(function() {
-      alert('Your mail is sent!');
-  }).fail(function(error) {
-      alert('Oops... ' + JSON.stringify(error));
+  $.ajax("https://api.emailjs.com/api/v1.0/email/send", {
+    type: "POST",
+    data: JSON.stringify(data),
+    contentType: "application/json",
   })
-  };
+    .done(function () {
+      $("#toast-email").toast("show");
+    })
+    .fail(function (error) {
+      $("#toast-fail").toast("show");
+    });
+}
 
 $(document).ready(function () {
   randomImage();
 
   if (localStorage.getItem("Log") !== null) {
-
     recall(); //Function call to display locally stored data
   }
 });
@@ -123,7 +123,7 @@ $("#chartButton").on("click", function () {
 
 $("#emailButton").on("click", function () {
   // Un-Comment out the below to make EmailJS live.
-  // sendEmail();
+  sendEmail();
 });
 
 // form validation
@@ -148,7 +148,7 @@ $(function () {
       temp: "Please enter a temperature",
     },
     submitHandler: function (form) {
-      $(".toast").toast("show");
+      $("#submit-toast").toast("show");
       $("#form")[0].reset();
     },
   });
