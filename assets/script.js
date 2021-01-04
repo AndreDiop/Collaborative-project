@@ -47,7 +47,8 @@ function sendEmail() {
       data: JSON.stringify(data),
       contentType: 'application/json'
   }).done(function() {
-      alert('Your mail is sent!');
+      $("#toast-email").toast("show");
+
   }).fail(function(error) {
       alert('Oops... ' + JSON.stringify(error));
   })
@@ -123,7 +124,7 @@ $("#chartButton").on("click", function () {
 
 $("#emailButton").on("click", function () {
   // Un-Comment out the below to make EmailJS live.
-  // sendEmail();
+  sendEmail();
 });
 
 // form validation
@@ -148,7 +149,7 @@ $(function () {
       temp: "Please enter a temperature",
     },
     submitHandler: function (form) {
-      $(".toast").toast("show");
+      $("#submit-toast").toast("show");
       $("#form")[0].reset();
     },
   });
