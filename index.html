@@ -18,7 +18,7 @@
       integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
       crossorigin="anonymous"
     />
-  
+
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;600;700&display=swap"
@@ -31,11 +31,12 @@
       crossorigin="anonymous"
     ></script>
   </head>
+
   <body>
     <div class="container">
       <div class="row mb-3">
         <div class="col-md-6 no-gutters">
-          <div class="left pt-5 unsplash-bg" id= "bg-image">
+          <div class="left pt-5 unsplash-bg" id="bg-image">
             <h1 class="text-center text-uppercase title">
               <span class="title-orange">Food Service</span><br />
               <span class="title-white">Maintenance Log</span>
@@ -51,9 +52,9 @@
               <div class="form-group">
                 <label for="equipment">Equipment ID:</label>
                 <select class="form-control" id="selector" name="equipment">
-                  <option value="" selected disabled
-                    >Please Select From List</option
-                  >
+                  <option value="" selected disabled>
+                    Please Select From List
+                  </option>
                   <option value="Walk-in Freezer">Walk-in freezer</option>
                   <option value="Cold Storage">Cold Storage</option>
                   <option value="Pastry Station Cooler">
@@ -76,60 +77,74 @@
                   />
                 </div>
               </div>
-            <div class="row mb-3">
-              <div class="col-lg-12">
-                <label for="temp">Temperature:</label>
-                <input
-                  name="temp"
-                  id="temperature"
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Temp in °F"
-                />
+              <div class="row mb-3">
+                <div class="col-lg-12">
+                  <label for="temp">Temperature:</label>
+                  <input
+                    name="temp"
+                    id="temperature"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Temp in °F"
+                  />
+                </div>
               </div>
-            </div>
-            <button id="addToLog" type="submit" class="btn btn-lg btn-orange fas fa-plus">
-              Add Entry To Log
-            </button>
-            <nav class="navbar fixed-bottom navbar-light">
-              <form class="container-fluid justify-right">
-            
-            <a href="./results.html" id="viewLog">
-              <button  type="button" class="btn btn-lg btn-orange fas fa-table">
-                View Log
-              </button>
-                <button
-                id="chartButton"
-                class="btn btn-lg btn-outline-orange fas fa-chart-pie"
-                type="button"
+              <button
+                id="addToLog"
+                type="submit"
+                class="btn btn-lg btn-orange fas fa-plus"
               >
-                Chart
+                Add Entry To Log
               </button>
-              </form>
-            </nav>
-
-          
-            </div>
-
-            </a>
-          </form>
-          <!-- toast alert on add button -->
-          <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 0;">
-              <div class="toast-header"style="background-color: #ff9000;">
-                  <strong class="me-auto text-white">Added to the Log!</strong>
-                <button type="button" class=" btn-dark ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+              <nav class="navbar fixed-bottom navbar-light">
+                <a class="container-fluid justify-right"> </a>
+                <a
+                  href="./results.html"
+                  id="viewLog"
+                  type="button"
+                  class="btn btn-lg btn-orange fas fa-table"
+                >
+                  View Log
+                </a>
+                <button
+                  id="chartButton"
+                  class="btn btn-lg btn-outline-orange fas fa-chart-pie"
+                  type="button"
+                >
+                  Chart
                 </button>
-              </div>
-              <div class="toast-body">
-                  Your results have been successfully added to the log.
-              </div>
+              </nav>
+            </form>
+          </div>
+
+          <!-- toast alert on add button -->
+          <div
+            class="toast"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+            style="position: absolute; top: 0"
+          >
+            <div class="toast-header" style="background-color: #ff9000">
+              <strong class="me-auto text-white">Added to the Log!</strong>
+              <button
+                type="button"
+                class="btn-dark ml-2 mb-1 close"
+                data-dismiss="toast"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
+            <div class="toast-body">
+              Your results have been successfully added to the log.
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <!-- TESTING AREA FOR UNSPLASH -->
-    <img src="" id="test-area"/>
+    <!-- <img src="" id="test-area" /> -->
 
     <!-- bootstrap scripts for the toast notification -->
     <script
