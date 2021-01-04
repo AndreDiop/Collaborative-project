@@ -62,10 +62,6 @@
 .title-white {
   color: #fff;
 }
-.col-md-6,
-.col-sm-6 {
-  background-color: antiquewhite;
-}
 .navbar {
   background-color: #e8cfa1;
 }
@@ -73,13 +69,20 @@
   width: 60%;
 }
 
-#homeButton,
 #viewLog {
   margin-left: auto;
   margin-right: auto;
 }
 #employeeName {
   padding-top: 15px;
+}
+
+#center-button {
+  justify-content: center;
+}
+
+.chart {
+  width: 50%;
 }
 
 @media only screen and (max-width: 600px) {

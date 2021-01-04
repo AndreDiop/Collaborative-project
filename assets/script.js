@@ -36,7 +36,7 @@ function randomImage() {
 $(document).ready(function () {
   randomImage();
 
-  if (localStorage.getItem("Equipment") !== null) {
+  if (localStorage.getItem("Log") !== null) {
     recall(); //Function call to display locally stored data
   }
 });
@@ -95,6 +95,10 @@ $("#viewLog").on("click", function () {
 // Home button function
 $("#homeButton").on("click", function () {
   window.location.href = "./index.html";
+});
+
+$("#chartButton").on("click", function () {
+  window.location.href = "./chart-test.html";
 });
 
 $("#emailButton").on("click", function () {
