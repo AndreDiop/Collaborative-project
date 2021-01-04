@@ -44,6 +44,7 @@
   color: #ff9000;
   border-color: #ff9000;
   padding: 0.5rem 2rem 0.5rem 2rem;
+  margin-right: 2em;
 }
 .btn-outline-orange:hover {
   color: #fff;
