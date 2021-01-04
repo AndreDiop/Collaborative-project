@@ -1,9 +1,4 @@
-#temperature-error,
-#userName-error,
-#selector-error {
-  color: red;
-}
-
+/* CLASSES */
 .container {
   width: 100%;
   margin: 0px !important;
@@ -69,7 +64,16 @@
 .col-lg-12 {
   width: 60%;
 }
+.chart {
+  width: 50%;
+}
 
+/* IDs */
+#temperature-error,
+#userName-error,
+#selector-error {
+  color: red;
+}
 #viewLog {
   margin-left: auto;
   margin-right: auto;
@@ -82,10 +86,8 @@
   justify-content: center;
 }
 
-.chart {
-  width: 50%;
-}
 
+/* MEDIA QUERIES */
 @media only screen and (max-width: 600px) {
   .title {
     font-size: 2rem;
