@@ -149,7 +149,7 @@ $(function () {
     },
     submitHandler: function (form) {
       $(".toast").toast("show");
-      console.log("toast");
+      $("#form")[0].reset();
     },
   });
 });
