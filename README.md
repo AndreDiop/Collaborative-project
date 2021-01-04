@@ -85,10 +85,10 @@ support.
 
 Production Team:
 
-- Paul Keldsen
-- Lisa Copeland
-- Sahil Patel
-- Andre Diop
+- [Paul Keldsen](https://github.com/Pkeld148)
+- [Lisa Copeland](https://github.com/stopdaydreaming)
+- [Sahil Patel](https://github.com/Spatel134)
+- [Andre Diop](https://github.com/AndreDiop)
 
 ## License
 
