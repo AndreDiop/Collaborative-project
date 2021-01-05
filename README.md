@@ -85,16 +85,16 @@ support.
 
 Production Team:
 
-- Paul Keldsen
-- Lisa Copeland
-- Sahil Patel
-- Andre Diop
+- [Paul Keldsen](https://github.com/Pkeld148)
+- [Lisa Copeland](https://github.com/stopdaydreaming)
+- [Sahil Patel](https://github.com/Spatel134)
+- [Andre Diop](https://github.com/AndreDiop)
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-Copyright (c) 2020
+Copyright (c) 2020-2021
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
